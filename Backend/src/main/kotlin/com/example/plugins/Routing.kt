@@ -1,5 +1,9 @@
 package com.example.plugins
 
+import com.example.models.cartRouting
+import com.example.models.categoryRouting
+import com.example.models.orderRouting
+import com.example.models.productRouting
 import io.ktor.server.routing.*
 import io.ktor.http.*
 import io.ktor.server.locations.*
@@ -12,19 +16,10 @@ fun Application.configureRouting() {
     }
 
     routing {
-        get("/") {
-            call.respondText("Hello World!")
-        }
-        get<MyLocation> {
-            call.respondText("Location: name=${it.name}, arg1=${it.arg1}, arg2=${it.arg2}")
-        }
-        // Register nested routes
-        get<Type.Edit> {
-            call.respondText("Inside $it")
-        }
-        get<Type.List> {
-            call.respondText("Inside $it")
-        }
+        productRouting()
+        cartRouting()
+        orderRouting()
+        categoryRouting()
     }
 }
 
