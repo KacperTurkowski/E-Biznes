@@ -13,6 +13,6 @@ fun getByCategory(categoryId: Int): Map<Int, ProductDB> {
     return products.products.filter { it.value.categoryId == categoryId};
 }
 
-fun getCategories(): MutableMap<Int, CategoryDB> {
-    return categories.categories;
+fun getCategories(): List<CategoryDB> {
+    return categories.categories.values.toList();
 }
