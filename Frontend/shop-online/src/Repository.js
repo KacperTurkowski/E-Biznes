@@ -8,6 +8,24 @@ const getCategories = async ()=>{
     return response.json();
 }
 
+const getCart = async ()=>{
+    const url = baseurl+"/cart/1";
+    const response = await fetch(url,{
+        headers: {'Content-Type' : 'application/json'}
+    });
+    return response.json();
+}
+
+const getProducts = async (categoryId)=>{
+    const url = baseurl+"/category/"+categoryId;
+    const response = await fetch(url,{
+        headers: {'Content-Type' : 'application/json'}
+    });
+    return response.json();
+}
+
 module.exports = {
-    getCategories
+    getCategories,
+    getCart,
+    getProducts
 }

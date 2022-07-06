@@ -9,8 +9,8 @@ class Categories {
 }
 var categories:Categories = Categories()
 
-fun getByCategory(categoryId: Int): Map<Int, ProductDB> {
-    return products.products.filter { it.value.categoryId == categoryId};
+fun getByCategory(categoryId: Int): List<ProductDB> {
+    return products.products.filter { it.value.categoryId == categoryId}.values.toList();
 }
 
 fun getCategories(): List<CategoryDB> {
