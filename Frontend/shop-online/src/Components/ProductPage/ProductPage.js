@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import Repository from "../../Repository";
+import Product from "../Product/Product";
 
 const ProductPage = (props)=>{
     const{
@@ -15,13 +16,14 @@ const ProductPage = (props)=>{
                 setProducts(json)
             })
     }, []);
-    // console.log(products)
+
     return(
         <>{
             products.map((product, index)=>(
-                <div key={index}>
-                    <label>{product.name}</label>
-                </div>
+                <>
+                    <Product product = {product}/>
+                <br/>
+                </>
             ))
         }
         </>

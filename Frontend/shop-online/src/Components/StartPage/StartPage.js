@@ -9,10 +9,6 @@ import HomeButton from "../HomeButton/HomeButton";
 import Box from '@mui/material/Box';
 import TabPanel from "../TabPanel/TabPanel";
 
-
-
-
-
 const StartPage = ()=>{
     const [categories, setCategories] = useState([]);
     const [value, setValue] = useState(0);
@@ -36,7 +32,6 @@ const StartPage = ()=>{
         };
     }
 
-    // console.log(categories)
     return(
         <>
             <h1>Twój sklep</h1>
@@ -44,7 +39,7 @@ const StartPage = ()=>{
             <UserButton/>
             <HomeButton/>
             <div id="div" className="mainPanel">
-                <Box sx={{ maxWidth: { xs: 500 }, bgcolor: 'background.paper' }}>
+                <Box >
                     <Tabs
                         value={value}
                         onChange={changeTab}

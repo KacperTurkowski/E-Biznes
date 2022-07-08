@@ -5,7 +5,6 @@ import "./HomeButton.css"
 const HomeButton = ()=>{
     const navigate = useNavigate();
 
-
     const openLogin = (event)=>{
         navigate("/")
     }

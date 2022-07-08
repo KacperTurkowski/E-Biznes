@@ -6,6 +6,7 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
+@kotlinx.serialization.Serializable
 data class UserWithProductId(val productId:Int, val userId:Int)
 
 fun Route.cartRouting() {
@@ -16,10 +17,12 @@ fun Route.cartRouting() {
         }
         delete("/all") {
             clearCart(call.receive<Int>());
+            call.respond("OK")
         }
         delete{
             val req = call.receive<UserWithProductId>();
             removeFromCart(req.userId, req.productId);
+            call.respond("OK")
         }
         get("create/{id}"){
             val id = Integer.parseInt(call.parameters["id"])
@@ -28,6 +31,7 @@ fun Route.cartRouting() {
         post{
             val req = call.receive<UserWithProductId>();
             addToCart(req.userId, req.productId);
+            call.respond("OK")
         }
     }
 }

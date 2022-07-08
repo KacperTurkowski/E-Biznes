@@ -17,6 +17,6 @@ fun getOrders(userId: Int): Map<Int, OrderDB> {
 
 fun addOrder(cart: CartDB) {
     orders.idIterator++;
-    val order = OrderDB(orders.idIterator, cart.products, cart.userId)
+    val order = OrderDB(orders.idIterator, cart.products.map{it.product}.toMutableList(), cart.userId)
     orders.orders[orders.idIterator] = order;
 }

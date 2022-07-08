@@ -6,5 +6,5 @@ data class ProductDB (
     val name: String,
     val price: Double,
     val description: String,
-    val categoryId: Int
+    val categoryId: Int,
 )

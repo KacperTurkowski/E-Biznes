@@ -4,5 +4,5 @@ package com.example.DBModels
 data class CartDB (
     val id: Int,
     val userId: Int,
-    val products: MutableList<ProductDB>
+    val products: MutableList<ProductInCart>
 )

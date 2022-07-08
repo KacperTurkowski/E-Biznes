@@ -1,10 +1,14 @@
 package com.example.repository
 
 import com.example.DBModels.CartDB
+import com.example.DBModels.ProductInCart
 
 class Carts {
-    var carts: MutableMap<Int, CartDB> = mutableMapOf(1 to CartDB(1, 1, mutableListOf()))
-    var idIterator: Int = 1
+    var carts: MutableMap<Int, CartDB> = mutableMapOf(1 to CartDB(1, 1, mutableListOf(
+        ProductInCart(getProducts()[1]!!, 1),
+        ProductInCart(getProducts()[2]!!, 2)
+    )))
+    var idIterator: Int = 2
 }
 var carts:Carts = Carts()
 
@@ -18,11 +22,20 @@ fun addCart(userId: Int) {
 }
 
 fun addToCart(userId: Int, productId: Int) {
-    carts.carts[userId]?.products?.add(products.products[productId]!!)
+
+    val product = carts.carts[userId]?.products?.first{it.product.id == productId}
+    if(product == null){
+        carts.carts[userId]?.products?.add(ProductInCart(products.products[productId]!!, 1))
+    }
+    else{
+        product.count++;
+    }
 }
 
 fun removeFromCart(userId: Int, productId: Int) {
-    carts.carts[userId]?.products?.remove(products.products[productId]!!)
+    carts.carts[userId]?.products?.first { it.product.id == productId }?.count = carts.carts[userId]?.products?.first { it.product.id == productId }?.count!! - 1;
+    if(carts.carts[userId]?.products?.first { it.product.id == productId }?.count!! < 1)
+        carts.carts[userId]?.products?.remove(carts.carts[userId]?.products?.first { it.product.id == productId })
 }
 
 fun clearCart(userId: Int) {

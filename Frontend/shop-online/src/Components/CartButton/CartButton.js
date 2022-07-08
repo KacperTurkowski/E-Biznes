@@ -1,4 +1,3 @@
-
 import * as Icon from 'react-bootstrap-icons';
 import {useNavigate} from "react-router-dom"
 import "./CartButton.css"
@@ -6,9 +5,8 @@ import "./CartButton.css"
 const CartButton = ()=>{
     const navigate = useNavigate();
 
-
     const openCart = (event)=>{
-        navigate("/cart/")
+        navigate("/cart")
     }
 
     return(
