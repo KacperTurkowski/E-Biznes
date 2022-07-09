@@ -22,13 +22,11 @@ fun addCart(userId: Int) {
 }
 
 fun addToCart(userId: Int, productId: Int) {
-
-    val product = carts.carts[userId]?.products?.first{it.product.id == productId}
-    if(product == null){
+    if(!carts.carts[userId]?.products?.any{it.product.id == productId}!!){
         carts.carts[userId]?.products?.add(ProductInCart(products.products[productId]!!, 1))
     }
     else{
-        product.count++;
+        carts.carts[userId]?.products?.first{it.product.id == productId}!!.count++;
     }
 }
 

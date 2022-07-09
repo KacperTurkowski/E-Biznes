@@ -4,7 +4,7 @@ import com.example.DBModels.ProductDB
 
 class Products {
     var products: MutableMap<Int, ProductDB> = mutableMapOf(1 to ProductDB(1, "Product 1", 120.1, "Opis 1", 1),
-        2 to ProductDB(3, "Product 2", 20.1, "Opis 2", 1),)
+        2 to ProductDB(2, "Product 2", 20.1, "Opis 2", 1),)
 
     var idIterator: Int = 2
 }

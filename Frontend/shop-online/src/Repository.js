@@ -48,10 +48,42 @@ const removeFromCart = async (product)=>{
     });
 }
 
+const createOrder = async (address)=>{
+    const url = baseurl+'/order';
+    let temp={}
+    temp.userId = 1;
+    temp.address = address;
+    await fetch(url,{
+        method: 'PUT',
+        body: JSON.stringify(temp),
+        headers: {'Content-Type' : 'application/json'}
+    });
+}
+
+const cleanCart = async ()=>{
+    const url = baseurl+'/cart/all';
+    await fetch(url,{
+        method: 'DELETE',
+        body: JSON.stringify(1),
+        headers: {'Content-Type' : 'application/json'}
+    });
+}
+
+const getOrders = async (userId)=>{
+    const url = baseurl+'/order/'+userId;
+    const response = await fetch(url,{
+        headers: {'Content-Type' : 'application/json'}
+    });
+    return response.json();
+}
+
 module.exports = {
     getCategories,
     getCart,
     getProducts,
     removeFromCart,
-    addToCart
+    addToCart,
+    createOrder,
+    cleanCart,
+    getOrders
 }

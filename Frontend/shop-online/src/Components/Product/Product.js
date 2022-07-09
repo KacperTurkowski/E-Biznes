@@ -12,6 +12,7 @@ const Product = (props)=>{
     function AddProduct(event) {
         event.stopPropagation()
         Repository.addToCart(product.id);
+        alert("Do kosza dodano: "+product.name)
     }
 
 return(

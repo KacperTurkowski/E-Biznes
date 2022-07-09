@@ -10,19 +10,14 @@ const ProductInCart = (props)=>{
         product
     } = props;
 
-    function OpenProduct(event) {
-        event.stopPropagation()
-
-        alert(product)
-    }
-
     function DeleteProduct(event){
         event.stopPropagation()
         Repository.removeFromCart(product.product);
+        window.location.reload()
     }
 
     return(
-        <Card  onClick={OpenProduct} >
+        <Card>
             <CardContent>
                 <Typography variant="h5" component="div">
                     {product.product.name}

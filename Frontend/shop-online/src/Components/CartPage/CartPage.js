@@ -3,13 +3,15 @@ import Repository from "../../Repository";
 import ProductInCart from "../ProductInCart/ProductInCart";
 import UserButton from "../UserButton/UserButton";
 import HomeButton from "../HomeButton/HomeButton";
-
+import TextField from '@mui/material/TextField';
+import "./CartPage.css"
 
 const CartPage = ()=>{
     const defaultValue = {};
     defaultValue.products = [];
 
     const [cart, setCart] = useState(defaultValue);
+    const [address, setAddress] = useState('');
 
     useEffect(() => {
         Repository
@@ -18,6 +20,12 @@ const CartPage = ()=>{
                 setCart(json)
             })
     }, {});
+
+    async function addOrder(){
+        await Repository.createOrder(address);
+        await Repository.cleanCart();
+        window.location.reload()
+    }
 
     return(
         <>
@@ -35,6 +43,11 @@ const CartPage = ()=>{
                     ))
                 }
             </div>
+            <h4>Złóż zamówienie</h4>
+            <TextField onChange={event => setAddress(event.target.value)} className="addressTextEdit" id="outlined-basic" label="Adres" variant="outlined" />
+            <br/>
+            <br/>
+            <button className="orderButton" onClick={addOrder}>Złóż zamówienie</button>
         </>
     )
 }

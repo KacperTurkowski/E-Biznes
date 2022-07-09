@@ -8,6 +8,7 @@ import UserButton from "../UserButton/UserButton";
 import HomeButton from "../HomeButton/HomeButton";
 import Box from '@mui/material/Box';
 import TabPanel from "../TabPanel/TabPanel";
+import OrdersButton from "../OrdersButton/OrdersButton";
 
 const StartPage = ()=>{
     const [categories, setCategories] = useState([]);
@@ -38,6 +39,7 @@ const StartPage = ()=>{
             <CartButton/>
             <UserButton/>
             <HomeButton/>
+            <OrdersButton/>
             <div id="div" className="mainPanel">
                 <Box >
                     <Tabs

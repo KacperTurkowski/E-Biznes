@@ -1,0 +1,12 @@
+.addressTextEdit {
+    width: 750px;
+}
+.orderButton{
+    line-height: 12px;
+    width: 250px;
+    height: 50px;
+    border: black;
+    background-color: Grey;
+    border-radius: 15px;
+    align-content: space-between;
+}
