@@ -6,6 +6,7 @@ plugins {
     application
     kotlin("jvm") version "1.7.0"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.7.0"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = "com.example"
@@ -28,7 +29,6 @@ dependencies {
     implementation("io.ktor:ktor-server-locations-jvm:$ktor_version")
     implementation("io.ktor:ktor-client-core-jvm:$ktor_version")
     implementation("io.ktor:ktor-client-apache-jvm:$ktor_version")
-//    implementation("io.ktor:ktor-server-cors-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-cors:$ktor_version")
     implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktor_version")
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:$ktor_version")
