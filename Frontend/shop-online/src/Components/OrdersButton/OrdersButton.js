@@ -5,7 +5,7 @@ import "./OrdersButton.css"
 const OrdersButton = ()=>{
     const navigate = useNavigate();
 
-    const openOrders = (event)=>{
+    const openOrders = ()=>{
         navigate("/orders")
     }
 

@@ -6,7 +6,7 @@ const UserButton = ()=>{
     const navigate = useNavigate();
 
 
-    const openLogin = (event)=>{
+    const openLogin = ()=>{
         navigate("/login/")
     }
 

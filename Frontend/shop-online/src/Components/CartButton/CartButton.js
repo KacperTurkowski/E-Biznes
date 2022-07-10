@@ -5,7 +5,7 @@ import "./CartButton.css"
 const CartButton = ()=>{
     const navigate = useNavigate();
 
-    const openCart = (event)=>{
+    const openCart = ()=>{
         navigate("/cart")
     }
 

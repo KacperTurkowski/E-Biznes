@@ -7,7 +7,7 @@ import "./OrdersPage.css"
 import HomeButton from "../HomeButton/HomeButton";
 
 const OrdersPage = ()=>{
-    var userId = 1
+    let userId = 1;
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
