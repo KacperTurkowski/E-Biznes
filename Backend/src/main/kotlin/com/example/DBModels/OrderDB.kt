@@ -1,8 +1,5 @@
 package com.example.DBModels
 
-import java.sql.Date
-import java.time.LocalDate
-
 @kotlinx.serialization.Serializable
 data class OrderDB (
     val id: Int,
