@@ -1,0 +1,15 @@
+name: temp1
+services:
+  frontend:
+    build:
+      context: frontend\shop-online
+      target: development
+    ports:
+      - 3000:3000
+
+  backend:
+    build:
+      context: backend
+      target: development
+    ports:
+      - 8080:8080
