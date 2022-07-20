@@ -13,4 +13,4 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - name: Build the docker-compose
-              run: docker compose build
+              run: docker compose -f ./E-Biznes/docker-compose.yml.yml build
