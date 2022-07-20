@@ -72,6 +72,7 @@ const cleanCart = async ()=>{
 const getOrders = async (userId)=>{
     const url = baseurl+'/order/'+userId;
     const response = await fetch(url,{
+        credentials:"include",
         headers: {'Content-Type' : 'application/json'}
     });
     return response.json();

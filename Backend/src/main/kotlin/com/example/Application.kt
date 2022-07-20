@@ -11,12 +11,6 @@ fun main() {
     embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
         configureRouting()
         configureSecurity()
-        configureHTTP()
         configureSerialization()
-
-//        install(CORS){
-//            anyHost()
-//            allowHeader(HttpHeaders.ContentType)
-//        }
     }.start(wait = true)
 }

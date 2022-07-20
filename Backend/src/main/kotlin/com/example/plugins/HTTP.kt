@@ -8,14 +8,21 @@ import io.ktor.server.request.*
 
 fun Application.configureHTTP() {
     install(CORS) {
-        allowMethod(HttpMethod.Options)
         allowMethod(HttpMethod.Get)
         allowMethod(HttpMethod.Put)
+        allowMethod(HttpMethod.Post)
         allowMethod(HttpMethod.Delete)
-        allowMethod(HttpMethod.Patch)
+        exposeHeader(HttpHeaders.Authorization)
+        exposeHeader(HttpHeaders.AccessControlAllowOrigin)
         allowHeader(HttpHeaders.Authorization)
         allowHeader(HttpHeaders.ContentType)
+        allowHeader(HttpHeaders.AccessControlAllowOrigin)
+        allowNonSimpleContentTypes = true
+        allowCredentials = true
+        allowSameOrigin = true
         anyHost()
+        allowHeader("user_session")
+        exposeHeader("user_session")
     }
 
 }

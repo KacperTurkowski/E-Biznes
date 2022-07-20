@@ -4,12 +4,10 @@ import com.example.models.cartRouting
 import com.example.models.categoryRouting
 import com.example.models.orderRouting
 import com.example.models.productRouting
-import io.ktor.server.routing.*
-import io.ktor.http.*
-import io.ktor.server.locations.*
 import io.ktor.server.application.*
-import io.ktor.server.response.*
-import io.ktor.server.request.*
+import io.ktor.server.auth.*
+import io.ktor.server.locations.*
+import io.ktor.server.routing.*
 
 fun Application.configureRouting() {
     install(Locations) {
@@ -18,7 +16,9 @@ fun Application.configureRouting() {
     routing {
         productRouting()
         cartRouting()
-        orderRouting()
+        authenticate("auth-session") {
+            orderRouting()
+        }
         categoryRouting()
     }
 }
