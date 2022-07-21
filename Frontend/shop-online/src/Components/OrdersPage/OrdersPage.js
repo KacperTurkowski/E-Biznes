@@ -7,12 +7,11 @@ import "./OrdersPage.css"
 import HomeButton from "../HomeButton/HomeButton";
 
 const OrdersPage = ()=>{
-    let userId = 1;
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
         Repository
-            .getOrders(userId)
+            .getOrders()
             .then(json => {
                 setOrders(json)
             })

@@ -2,6 +2,7 @@ package com.example.models
 
 import com.example.plugins.UserSession
 import com.example.repository.addOrder
+import com.example.repository.getOrders
 import com.example.services.UserProvider
 import io.ktor.server.application.*
 import io.ktor.server.request.*
@@ -9,25 +10,18 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.sessions.*
 
-@kotlinx.serialization.Serializable
-data class OrderApi ( val userId:Int, val address:String)
 val userService = UserProvider
 fun Route.orderRouting() {
     route("/order") {
-        get ("{id}"){
+        get {
             val userSession = call.sessions.get<UserSession>();
             val userInfo = userService.getUserInfo(userSession!!.id)
-            val x = userInfo;
-            val id = Integer.parseInt(call.parameters["id"])
-            if(userInfo == null)
-                call.respond("null")
-            else{
-                call.respond(userInfo)
-            }
+            call.respond(getOrders(userInfo.id))
         }
         put{
-            val req = call.receive<OrderApi>();
-            addOrder(req.userId, req.address);
+            val address = call.receive<String>();
+            val userInfo = userService.getUserInfo(call.sessions.get<UserSession>()!!.id)
+            addOrder(userInfo.id, address);
             call.respond("ok")
         }
     }

@@ -3,17 +3,12 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import * as Icon from "react-bootstrap-icons";
 import Repository from "../../Repository";
+import PlusButton from "../PlusButton/PlusButton";
 
 const Product = (props)=>{
     const{
         product
     } = props;
-
-    function AddProduct(event) {
-        event.stopPropagation()
-        Repository.addToCart(product.id);
-        alert("Do kosza dodano: "+product.name)
-    }
 
 return(
     <Card >
@@ -29,7 +24,7 @@ return(
                 <br />
             </Typography>
             <Typography variant="body2">
-                <button className="deleteButton" onClick={AddProduct}><Icon.Plus size="30" color="black"></Icon.Plus></button>
+                <PlusButton product={product} />
                 <br />
             </Typography>
         </CardContent>

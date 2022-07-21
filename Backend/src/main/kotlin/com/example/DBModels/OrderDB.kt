@@ -4,7 +4,7 @@ package com.example.DBModels
 data class OrderDB (
     val id: Int,
     val products: MutableList<ProductDB>,
-    val userId : Int,
+    val userId : String,
     val address: String,
     val price: Double,
     val date: String

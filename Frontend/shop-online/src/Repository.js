@@ -9,8 +9,9 @@ const getCategories = async ()=>{
 }
 
 const getCart = async ()=>{
-    const url = baseurl+"/cart/1";
+    const url = baseurl+"/cart";
     const response = await fetch(url,{
+        credentials:"include",
         headers: {'Content-Type' : 'application/json'}
     });
     return response.json();
@@ -18,12 +19,10 @@ const getCart = async ()=>{
 
 const addToCart = async (productId)=>{
     const url = baseurl+'/cart';
-    let temp = {}
-    temp.productId = productId;
-    temp.userId = 1
     await fetch(url,{
         method: 'POST',
-        body: JSON.stringify(temp),
+        credentials:"include",
+        body: JSON.stringify(productId),
         headers: {'Content-Type' : 'application/json'}
     });
 }
@@ -38,24 +37,20 @@ const getProducts = async (categoryId)=>{
 
 const removeFromCart = async (product)=>{
     const url = baseurl+'/cart';
-    let temp = {}
-    temp.productId = product.id;
-    temp.userId = 1
     await fetch(url,{
         method: 'DELETE',
-        body: JSON.stringify(temp),
+        credentials:"include",
+        body: JSON.stringify(product.id),
         headers: {'Content-Type' : 'application/json'}
     });
 }
 
 const createOrder = async (address)=>{
     const url = baseurl+'/order';
-    let temp={}
-    temp.userId = 1;
-    temp.address = address;
     await fetch(url,{
+        credentials:"include",
         method: 'PUT',
-        body: JSON.stringify(temp),
+        body: JSON.stringify(address),
         headers: {'Content-Type' : 'application/json'}
     });
 }
@@ -63,14 +58,14 @@ const createOrder = async (address)=>{
 const cleanCart = async ()=>{
     const url = baseurl+'/cart/all';
     await fetch(url,{
+        credentials:"include",
         method: 'DELETE',
-        body: JSON.stringify(1),
         headers: {'Content-Type' : 'application/json'}
     });
 }
 
-const getOrders = async (userId)=>{
-    const url = baseurl+'/order/'+userId;
+const getOrders = async ()=>{
+    const url = baseurl+'/order';
     const response = await fetch(url,{
         credentials:"include",
         headers: {'Content-Type' : 'application/json'}
