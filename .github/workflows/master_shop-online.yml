@@ -15,8 +15,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Set up Docker Buildx
+    - name: build image
       run: docker-compose up
 
     - name: Log in to registry
@@ -25,9 +24,6 @@ jobs:
         registry: https://index.docker.io/v1/
         username: ${{ secrets.AzureAppService_ContainerUsername_f64cc297bdcc430891a4e8d4cf32206b }}
         password: ${{ secrets.AzureAppService_ContainerPassword_15e09e1d45ab43f6864bd535c588a11c }}
-
-    - name: Build and push container image to registry
-      run: docker-compose push
 
   deploy:
     runs-on: ubuntu-latest
