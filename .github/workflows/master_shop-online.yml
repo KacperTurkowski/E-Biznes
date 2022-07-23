@@ -31,7 +31,7 @@ jobs:
    
     - name: push image
       run: |
-        docker-compose push
+        docker compose push
 
   deploy:
     runs-on: ubuntu-latest
