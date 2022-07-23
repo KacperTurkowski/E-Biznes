@@ -74,11 +74,11 @@ class ApplicationTest {
     @BeforeEach
     fun openBrowser() {
         driver = WebDriverManager.edgedriver().create()
+        driver.get(portalUrl)
     }
 
     @Test
     fun shopNameVisibility() {
-        driver.get(portalUrl)
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id(shopName)))
         val shopNameVisibility = driver.findElement(By.id(shopName)).isDisplayed
@@ -88,7 +88,6 @@ class ApplicationTest {
     @Test
     fun cartButtonIsHidden() {
         //cart button should be hidden when user isn't logged
-        driver.get(portalUrl)
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
         val cartButtons = driver.findElements(By.id(cartButton))
@@ -99,7 +98,6 @@ class ApplicationTest {
     @Test
     fun ordersButtonIsHidden() {
         //orders button should be hidden when user isn't logged
-        driver.get(portalUrl)
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id("ordersButton")))
         val cartButtons = driver.findElements(By.id("ordersButton"))
@@ -110,7 +108,6 @@ class ApplicationTest {
     @Test
     fun userButtonUnloggedUserVisibility() {
         //userButtonUnloggedUser should be visible when user isn't logged
-        driver.get(portalUrl)
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id("userButtonUnloggedUser")))
         val userButtonVisibility = driver.findElement(By.id("userButtonUnloggedUser")).isDisplayed
@@ -120,7 +117,6 @@ class ApplicationTest {
     @Test
     fun userButtonUnloggedUserOnCartPageVisibility() {
         //userButtonUnloggedUser should be visible when user isn't logged
-        driver.get("$portalUrl/cart")
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id("userButtonUnloggedUser")))
         val userButtonVisibility = driver.findElement(By.id("userButtonUnloggedUser")).isDisplayed
@@ -130,15 +126,12 @@ class ApplicationTest {
     @Test
     fun userButtonloggedUserVisibility() {
         //userButtonloggedUser should be hidden when user isn't logged
-        driver.get(portalUrl)
-
         val userButtons = driver.findElements(By.id("userButtonLoggedUser"))
         Assertions.assertEquals(userButtons.size, 0)
     }
 
     @Test
     fun homeButtonVisibility() {
-        driver.get(portalUrl)
         val homeButtonVisibility = driver.findElement(By.id("homeButton")).isDisplayed
         Assertions.assertTrue(homeButtonVisibility)
     }
@@ -166,21 +159,18 @@ class ApplicationTest {
 
     @Test
     fun startPageVisibilty() {
-        driver.get(portalUrl)
         val startPageVisibility = driver.findElement(By.id("startPage")).isDisplayed
         Assertions.assertTrue(startPageVisibility)
     }
 
     @Test
     fun categoriesVisibilty() {
-        driver.get(portalUrl)
         val userButtons = driver.findElements(By.id("category_1"))
         Assertions.assertEquals(userButtons.size, 1)
     }
 
     @Test
     fun changeCategory() {
-        driver.get(portalUrl)
         val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
 
@@ -191,7 +181,6 @@ class ApplicationTest {
 
     @Test
     fun productsVisibilty() {
-        driver.get(portalUrl)
         val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         val products = driver.findElements(By.xpath("//*[@id=\"product\"]/div"))
@@ -200,7 +189,6 @@ class ApplicationTest {
 
     @Test
     fun plusButtonVisibilty() {
-        driver.get(portalUrl)
         val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
@@ -211,7 +199,6 @@ class ApplicationTest {
 
     @Test
     fun productNameVisibilty() {
-        driver.get(portalUrl)
         val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
@@ -222,7 +209,6 @@ class ApplicationTest {
 
     @Test
     fun productPriceVisibilty() {
-        driver.get(portalUrl)
         val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
@@ -233,7 +219,6 @@ class ApplicationTest {
 
     @Test
     fun productDescriptionVisibilty() {
-        driver.get(portalUrl)
         val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
@@ -305,7 +290,6 @@ class ApplicationTest {
 
     @Test
     fun loginAndLogout() {
-        driver.get(portalUrl)
         loginUsingGoogleAccount();
         logout();
     }
@@ -313,7 +297,6 @@ class ApplicationTest {
     @Test
     fun cartButtonIsVisibleGoogle() {
         //cart button should be visible when user is logged
-        driver.get(portalUrl)
         loginUsingGoogleAccount()
         cartButtonIsVisible()
     }
@@ -321,7 +304,6 @@ class ApplicationTest {
     @Test
     fun ordersButtonIsVisibleGoogle() {
         //orders button should be visible when user is logged
-        driver.get(portalUrl)
         loginUsingGoogleAccount();
         ordersButtonIsVisible()
     }
@@ -329,77 +311,66 @@ class ApplicationTest {
     @Test
     fun CartButtonWorkGoogle() {
         //cart button should be visible when user is logged
-        driver.get(portalUrl)
         loginUsingGoogleAccount()
         CartButtonWork()
     }
 
     @Test
     fun OrdersButtonWorkGoogle() {
-        driver.get(portalUrl)
         loginUsingGoogleAccount();
         OrdersButtonWork()
     }
 
     @Test
     fun PlusButtonIsVisibleGoogle() {
-        driver.get(portalUrl)
         loginUsingGoogleAccount();
         PlusButtonIsVisible();
     }
 
     @Test
     fun PlusButtonWorkGoogle() {
-        driver.get(portalUrl)
         loginUsingGoogleAccount()
         PlusButtonWork()
     }
 
     @Test
     fun DeleteButtonIsVisibleGoogle() {
-        driver.get(portalUrl)
         loginUsingGoogleAccount()
         DeleteButtonIsVisible()
     }
 
     @Test
     fun DeleteButtonWorkGoogle() {
-        driver.get(portalUrl)
         loginUsingGoogleAccount()
         DeleteButtonWork()
     }
 
     @Test
     fun addMultipleElementsGoogle() {
-        driver.get(portalUrl)
         loginUsingGoogleAccount()
         addMultipleElements()
     }
 
     @Test
     fun clearCartAfterOrderGoogle() {
-        driver.get(portalUrl)
         loginUsingGoogleAccount()
         clearCartAfterOrder()
     }
 
     @Test
     fun createOrderWorkGoogle() {
-        driver.get(portalUrl)
         loginUsingGoogleAccount();
         createOrderWork()
     }
 
     @Test
     fun createOrderWorkMultipleElementsGoogle() {
-        driver.get(portalUrl)
         loginUsingGoogleAccount()
         createOrderWorkMultipleElements()
     }
 
     @Test
     fun verifySimpleOrderGoogle() {
-        driver.get(portalUrl)
         loginUsingGoogleAccount();
         verifySimpleOrder();
     }
@@ -407,7 +378,6 @@ class ApplicationTest {
     @Test
     fun cartButtonIsVisibleGithub() {
         //cart button should be visible when user is logged
-        driver.get(portalUrl)
         loginUsingGithubAccount();
         cartButtonIsVisible();
     }
@@ -423,7 +393,6 @@ class ApplicationTest {
     @Test
     fun ordersButtonIsVisibleGithub() {
         //orders button should be visible when user is logged
-        driver.get(portalUrl)
         loginUsingGithubAccount();
         ordersButtonIsVisible();
     }
@@ -439,7 +408,6 @@ class ApplicationTest {
     @Test
     fun CartButtonWorkGithub() {
         //cart button should be visible when user is logged
-        driver.get(portalUrl)
         loginUsingGithubAccount();
         CartButtonWork();
     }
@@ -456,7 +424,6 @@ class ApplicationTest {
 
     @Test
     fun OrdersButtonWorkGithub() {
-        driver.get(portalUrl)
         loginUsingGithubAccount();
         OrdersButtonWork();
     }
@@ -474,7 +441,6 @@ class ApplicationTest {
 
     @Test
     fun PlusButtonIsVisibleGithub() {
-        driver.get(portalUrl)
         loginUsingGithubAccount();
         PlusButtonIsVisible();
     }
@@ -491,7 +457,6 @@ class ApplicationTest {
 
     @Test
     fun PlusButtonWorkGithub() {
-        driver.get(portalUrl)
         loginUsingGithubAccount();
         PlusButtonWork();
     }
@@ -515,7 +480,6 @@ class ApplicationTest {
 
     @Test
     fun DeleteButtonIsVisibleGithub() {
-        driver.get(portalUrl)
         loginUsingGithubAccount()
         DeleteButtonIsVisible()
     }
@@ -538,7 +502,6 @@ class ApplicationTest {
 
     @Test
     fun DeleteButtonWorkGithub() {
-        driver.get(portalUrl)
         loginUsingGithubAccount()
         DeleteButtonWork()
     }
@@ -562,7 +525,6 @@ class ApplicationTest {
 
     @Test
     fun addMulipleElementsGithub() {
-        driver.get(portalUrl)
         loginUsingGithubAccount()
         addMultipleElements()
     }
@@ -600,7 +562,6 @@ class ApplicationTest {
 
     @Test
     fun clearCartAfterOrderGithub() {
-        driver.get(portalUrl)
         loginUsingGithubAccount()
         clearCartAfterOrder()
     }
@@ -626,7 +587,6 @@ class ApplicationTest {
 
     @Test
     fun createOrderWorkGithub() {
-        driver.get(portalUrl)
         loginUsingGithubAccount()
         createOrderWork()
     }
@@ -669,7 +629,6 @@ class ApplicationTest {
 
     @Test
     fun createOrderWorkMultipleElementsGithub() {
-        driver.get(portalUrl)
         loginUsingGithubAccount()
         createOrderWorkMultipleElements()
     }
@@ -733,8 +692,6 @@ class ApplicationTest {
 
     @Test
     fun verifySimpleOrderGithub() {
-        driver.get(portalUrl)
-
         loginUsingGithubAccount();
         verifySimpleOrder();
     }
