@@ -38,8 +38,8 @@ fun Application.configureSecurity(client1: HttpClient = httpClient ) {
                     authorizeUrl = "https://accounts.google.com/o/oauth2/auth",
                     accessTokenUrl = "https://accounts.google.com/o/oauth2/token",
                     requestMethod = HttpMethod.Post,
-                    clientId = "77175158456-2c2sn9kd30g8c1m37voa496pfsabd0sj.apps.googleusercontent.com",
-                    clientSecret = "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",
+                    clientId = "",
+                    clientSecret = "",
                     defaultScopes = listOf("https://www.googleapis.com/auth/userinfo.profile")
                 )
             }
@@ -53,8 +53,8 @@ fun Application.configureSecurity(client1: HttpClient = httpClient ) {
                     authorizeUrl = "https://github.com/login/oauth/authorize",
                     accessTokenUrl = "https://github.com/login/oauth/access_token",
                     requestMethod = HttpMethod.Post,
-                    clientId = "facb9d0a1f30ef385c2e",
-                    clientSecret = "23fc5b381c790447784332393b49a0fd3ca286c7",
+                    clientId = "",
+                    clientSecret = "",
                 )
             }
             client = httpClient
