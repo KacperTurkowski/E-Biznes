@@ -116,6 +116,7 @@ class ApplicationTest {
 
     @Test
     fun userButtonUnloggedUserOnCartPageVisibility() {
+        driver.get("$portalUrl/cart")
         //userButtonUnloggedUser should be visible when user isn't logged
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id("userButtonUnloggedUser")))
