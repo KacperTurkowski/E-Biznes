@@ -15,6 +15,8 @@ class ApplicationTest {
     private val shopName = "shop-name";
     private val cartButton = "cart-Button"
     private val tabId = "//*[@id=\"full-width-tab-1\"]";
+    private val outlinedBasic = "outlined-basic"
+    private val testowyAdres = "Testowy adres 1"
 
     fun loginUsingGithubAccount(){
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
@@ -179,7 +181,7 @@ class ApplicationTest {
     @Test
     fun changeCategory() {
         driver.get(portalUrl)
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
 
         val element = driver.findElements(By.xpath("//*[@id=\"category_1\"]"))
@@ -190,7 +192,7 @@ class ApplicationTest {
     @Test
     fun productsVisibilty() {
         driver.get(portalUrl)
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         val products = driver.findElements(By.xpath("//*[@id=\"product\"]/div"))
         Assertions.assertTrue(products.size>0)
@@ -199,7 +201,7 @@ class ApplicationTest {
     @Test
     fun plusButtonVisibilty() {
         driver.get(portalUrl)
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
@@ -210,7 +212,7 @@ class ApplicationTest {
     @Test
     fun productNameVisibilty() {
         driver.get(portalUrl)
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id("productName")))
@@ -221,7 +223,7 @@ class ApplicationTest {
     @Test
     fun productPriceVisibilty() {
         driver.get(portalUrl)
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id("productPrice")))
@@ -232,7 +234,7 @@ class ApplicationTest {
     @Test
     fun productDescriptionVisibilty() {
         driver.get(portalUrl)
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id("productDescription")))
@@ -297,7 +299,7 @@ class ApplicationTest {
     @Test
     fun adressTextFieldVisibility() {
         driver.get("$portalUrl/cart")
-        val buttonVisibility = driver.findElement(By.id("outlined-basic")).isDisplayed
+        val buttonVisibility = driver.findElement(By.id(outlinedBasic)).isDisplayed
         Assertions.assertTrue(buttonVisibility)
     }
 
@@ -365,8 +367,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGoogleAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         val plusButton = driver.findElements(By.id("plusButton"))
@@ -379,8 +381,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGoogleAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
@@ -399,8 +401,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGoogleAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
@@ -419,8 +421,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGoogleAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
@@ -439,8 +441,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGoogleAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
@@ -473,8 +475,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGoogleAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
@@ -502,8 +504,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("homeButton")))
         driver.findElement(By.id("homeButton")).click()
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
@@ -545,8 +547,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("homeButton")))
         driver.findElement(By.id("homeButton")).click()
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
@@ -599,8 +601,8 @@ class ApplicationTest {
 
         loginUsingGithubAccount();
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
@@ -616,7 +618,7 @@ class ApplicationTest {
         Thread.sleep(2000);
         val productsAmount = driver.findElements(By.id("productAmount"));
         val productText = driver.findElement(By.id("productAmount")).text;
-        driver.findElement(By.id("outlined-basic")).sendKeys("Testowy adres 1")
+        driver.findElement(By.id(outlinedBasic)).sendKeys(testowyAdres)
         driver.findElement(By.id("orderButton")).click()
         Thread.sleep(2000);
         wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
@@ -643,7 +645,7 @@ class ApplicationTest {
         Assertions.assertEquals(1, productsAmount.size)
         Assertions.assertEquals(LocalDateTime.now().toString().substring(0,10),date)
         Assertions.assertEquals("120.1 PLN",price)
-        Assertions.assertEquals("Testowy adres 1",address)
+        Assertions.assertEquals(testowyAdres,address)
         Assertions.assertEquals("Ilość produktów w koszyku: 1",productText)
     }
 
@@ -704,8 +706,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGithubAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         val plusButton = driver.findElements(By.id("plusButton"))
@@ -718,8 +720,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGithubAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
@@ -738,8 +740,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGithubAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
@@ -758,8 +760,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGithubAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
@@ -778,8 +780,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGithubAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
@@ -812,8 +814,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGithubAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
@@ -841,8 +843,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("homeButton")))
         driver.findElement(By.id("homeButton")).click()
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
@@ -884,8 +886,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("homeButton")))
         driver.findElement(By.id("homeButton")).click()
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
@@ -938,8 +940,8 @@ class ApplicationTest {
 
         loginUsingGithubAccount();
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"full-width-tab-1\"]")))
-        val category1 = driver.findElement(By.xpath("//*[@id=\"full-width-tab-1\"]"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
+        val category1 = driver.findElement(By.xpath(tabId))
         category1.click()
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
@@ -955,7 +957,7 @@ class ApplicationTest {
         Thread.sleep(2000);
         val productsAmount = driver.findElements(By.id("productAmount"));
         val productText = driver.findElement(By.id("productAmount")).text;
-        driver.findElement(By.id("outlined-basic")).sendKeys("Testowy adres 1")
+        driver.findElement(By.id(outlinedBasic)).sendKeys(testowyAdres)
         driver.findElement(By.id("orderButton")).click()
         Thread.sleep(2000);
         wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
@@ -982,7 +984,7 @@ class ApplicationTest {
         Assertions.assertEquals(1, productsAmount.size)
         Assertions.assertEquals(LocalDateTime.now().toString().substring(0,10),date)
         Assertions.assertEquals("120.1 PLN",price)
-        Assertions.assertEquals("Testowy adres 1",address)
+        Assertions.assertEquals(testowyAdres,address)
         Assertions.assertEquals("Ilość produktów w koszyku: 1",productText)
     }
 }
