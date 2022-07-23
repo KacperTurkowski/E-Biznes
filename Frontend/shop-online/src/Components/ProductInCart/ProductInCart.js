@@ -17,7 +17,7 @@ const ProductInCart = (props)=>{
     }
 
     return(
-        <Card>
+        <Card id="productInCart">
             <CardContent>
                 <Typography variant="h5" component="div">
                     {product.product.name}
@@ -28,10 +28,11 @@ const ProductInCart = (props)=>{
                 <Typography variant="body2">
                     {product.product.description}
                     <br />
-                    Ilość produktów w koszyku: {product.count}
+                    <label id="productAmount">Ilość produktów w koszyku: {product.count}</label>
+
                 </Typography>
 
-                <button className="deleteButton" onClick={DeleteProduct}><Icon.Trash size="30" color="black"></Icon.Trash></button>
+                <button id="deleteButton" className="deleteButton" onClick={DeleteProduct}><Icon.Trash size="30" color="black"></Icon.Trash></button>
             </CardContent>
         </Card>
     )

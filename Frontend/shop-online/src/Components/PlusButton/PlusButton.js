@@ -17,7 +17,7 @@ const PlusButton = (props)=>{
 
     if(isLogged){
         return(
-            <button className="deleteButton" onClick={AddProduct}><Icon.Plus size="30" color="black"></Icon.Plus></button>
+            <button id="plusButton" className="deleteButton" onClick={AddProduct}><Icon.Plus size="30" color="black"></Icon.Plus></button>
         )
     }
     else{

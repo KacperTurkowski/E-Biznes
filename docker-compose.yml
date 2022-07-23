@@ -1,4 +1,4 @@
-name: temp1
+name: kt_e_biznes_shop_online
 services:
   frontend:
     build:

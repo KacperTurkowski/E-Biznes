@@ -35,7 +35,7 @@ const StartPage = ()=>{
 
     return(
         <>
-            <h1>Twój sklep</h1>
+            <h1 id="shop-name">Twój sklep</h1>
             <CartButton/>
             <UserButton/>
             <HomeButton/>
@@ -49,7 +49,7 @@ const StartPage = ()=>{
                         scrollButtons="auto"
                         aria-label="scrollable auto tabs example"
                     >
-                        <Tab label="Strona startowa"></Tab>
+                        <Tab id="startPage" label="Strona startowa"></Tab>
                         {
                             categories.map((category, index)=>(
                                 <Tab key={index} label={category.name} {...a11yProps(category.id)} />
@@ -59,7 +59,7 @@ const StartPage = ()=>{
                     </Tabs>
                     {
                         categories.map((category, index)=>(
-                            <TabPanel value={value} index={index} />
+                            <TabPanel id={'category_'+index} value={value} index={index} />
                         ))
                     }
                 </Box>

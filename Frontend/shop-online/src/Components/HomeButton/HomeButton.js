@@ -10,7 +10,7 @@ const HomeButton = ()=>{
     }
 
     return(
-        <button className="homeButton" onClick={openLogin}><Icon.House size="30" color="black"></Icon.House></button>
+        <button id = "homeButton" className="homeButton" onClick={openLogin}><Icon.House size="30" color="black"></Icon.House></button>
     )
 }
 export default HomeButton;

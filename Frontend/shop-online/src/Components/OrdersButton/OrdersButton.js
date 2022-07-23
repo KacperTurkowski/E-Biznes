@@ -15,7 +15,7 @@ const OrdersButton = ()=>{
 
     if(isLogged){
         return(
-            <button className="ordersButton" onClick={openOrders}><Icon.ClockHistory size="30" color="black"></Icon.ClockHistory></button>
+            <button id="ordersButton" className="ordersButton" onClick={openOrders}><Icon.ClockHistory size="30" color="black"></Icon.ClockHistory></button>
         )
     }
     else{

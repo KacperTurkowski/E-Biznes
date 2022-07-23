@@ -47,7 +47,7 @@ const CartPage = ()=>{
             <TextField onChange={event => setAddress(event.target.value)} className="addressTextEdit" id="outlined-basic" label="Adres" variant="outlined" />
             <br/>
             <br/>
-            <button className="orderButton" onClick={addOrder}>Złóż zamówienie</button>
+            <button id="orderButton" className="orderButton" onClick={addOrder}>Złóż zamówienie</button>
         </>
     )
 }

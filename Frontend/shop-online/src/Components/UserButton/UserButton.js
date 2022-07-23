@@ -16,14 +16,14 @@ const UserButton = ()=>{
 
     if(!isLogged){
         return(
-            <button className="userButton" onClick={openLogin}>
+            <button id="userButtonUnloggedUser" className="userButton" onClick={openLogin}>
                 <Icon.Person size="30" color="black"/>
             </button>
         )
     }else{
         return(
             <a href='http://localhost:8080/auth/logout' rel='noopener noreferrer' style={{color: "black", fontSize: "large", marginLeft: '10px', textDecoration: 'none'}}>
-                <button className="userButton">
+                <button id="userButtonLoggedUser" className="userButton">
                     <Icon.DoorOpen size="30" color="black"/>
                 </button>
             </a>

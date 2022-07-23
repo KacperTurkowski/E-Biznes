@@ -13,7 +13,7 @@ const CartButton = ()=>{
     let isLogged = cookies.user_session !== undefined;
     if(isLogged){
         return(
-            <button className="cartButton" onClick={openCart}><Icon.Cart size="30" color="black"></Icon.Cart></button>
+            <button id="cart-Button" className="cartButton" onClick={openCart}><Icon.Cart size="30" color="black"></Icon.Cart></button>
         )
     }
     else{

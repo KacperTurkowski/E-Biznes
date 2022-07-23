@@ -3,7 +3,7 @@ import * as Icon from 'react-bootstrap-icons';
 const GithubButton = ()=>{
     return(
         <a href='http://localhost:8080/auth_github' rel='noopener noreferrer'>
-            <button style={{
+            <button id="githubButton" style={{
                 width: "100px"
             }}>
                 <Icon.Github size="30" color="black"/>

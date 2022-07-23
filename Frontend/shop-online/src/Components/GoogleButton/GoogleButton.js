@@ -3,7 +3,7 @@ import * as Icon from 'react-bootstrap-icons';
 const GoogleButton = ()=>{
     return(
         <a href='http://localhost:8080/auth' rel='noopener noreferrer'>
-            <button style={{
+            <button id="googleButton" style={{
                 width: "100px"
             }}>
                 <Icon.Google size="30" color="black"/>

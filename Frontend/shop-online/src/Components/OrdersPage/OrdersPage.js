@@ -18,20 +18,20 @@ const OrdersPage = ()=>{
     }, []);
     return(
         <>
-            <h1>Historia zamówień</h1>
+            <h1 id="historyTitle">Historia zamówień</h1>
             <HomeButton/>
             {
             orders.map((order, index)=>(
                 <>
-                    <Card key = {index} className = "order">
+                    <Card key = {index} id="order" className = "order">
                         <CardContent>
-                            <Typography variant="h5" component="div">
+                            <Typography id={'order_date_'+index} variant="h5" component="div">
                                 {order.date}
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                            <Typography id={'order_price_'+index} sx={{ mb: 1.5 }} color="text.secondary">
                                 {order.price} PLN
                             </Typography>
-                            <Typography variant="h7">
+                            <Typography id={'order_address_'+index} variant="h7">
                                 {order.address}
                                 <br />
                                 <br />

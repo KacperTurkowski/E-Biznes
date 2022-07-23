@@ -21,7 +21,7 @@ const ProductPage = (props)=>{
         <>{
             products.map((product, index)=>(
                 <>
-                    <Product key = {index} product = {product}/>
+                    <Product id={"product_"+index} key = {index} product = {product}/>
                 <br/>
                 </>
             ))
