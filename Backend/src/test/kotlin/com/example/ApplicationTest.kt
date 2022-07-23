@@ -305,348 +305,103 @@ class ApplicationTest {
 
     @Test
     fun loginAndLogout() {
-        driver.get("$portalUrl")
-        loginUsingGoogleAccount();
-        logout();
-    }
-
-    @Test
-    fun cartButtonIsVisible() {
-        //cart button should be visible when user is logged
         driver.get(portalUrl)
         loginUsingGoogleAccount();
-        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
-        val cartButtons = driver.findElement(By.id(cartButton)).isDisplayed
         logout();
-        Assertions.assertTrue(cartButtons)
     }
 
     @Test
-    fun ordersButtonIsVisible() {
+    fun cartButtonIsVisibleGoogle() {
+        //cart button should be visible when user is logged
+        driver.get(portalUrl)
+        loginUsingGoogleAccount()
+        cartButtonIsVisible()
+    }
+
+    @Test
+    fun ordersButtonIsVisibleGoogle() {
         //orders button should be visible when user is logged
         driver.get(portalUrl)
         loginUsingGoogleAccount();
-        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("ordersButton")))
-        val cartButtons = driver.findElement(By.id("ordersButton")).isDisplayed
-        logout();
-        Assertions.assertTrue(cartButtons)
+        ordersButtonIsVisible()
     }
 
     @Test
-    fun CartButtonWork() {
+    fun CartButtonWorkGoogle() {
         //cart button should be visible when user is logged
         driver.get(portalUrl)
-        loginUsingGoogleAccount();
-        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
-        driver.findElement(By.id(cartButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
-        val element = driver.findElement(By.id("orderButton")).isDisplayed
-        logout();
-        Assertions.assertTrue(element)
+        loginUsingGoogleAccount()
+        CartButtonWork()
     }
 
     @Test
-    fun OrdersButtonWork() {
+    fun OrdersButtonWorkGoogle() {
         driver.get(portalUrl)
         loginUsingGoogleAccount();
-        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("ordersButton")))
-        driver.findElement(By.id("ordersButton")).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("historyTitle")))
-        val element = driver.findElement(By.id("historyTitle")).isDisplayed
-        driver.get(portalUrl)
-        logout();
-        Assertions.assertTrue(element)
+        OrdersButtonWork()
     }
 
     @Test
-    fun PlusButtonIsVisible() {
+    fun PlusButtonIsVisibleGoogle() {
         driver.get(portalUrl)
         loginUsingGoogleAccount();
-        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
-        val category1 = driver.findElement(By.xpath(tabId))
-        category1.click()
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
-        val plusButton = driver.findElements(By.id("plusButton"))
-        logout();
-        Assertions.assertTrue(plusButton.size!=0)
+        PlusButtonIsVisible();
     }
 
     @Test
-    fun PlusButtonWork() {
+    fun PlusButtonWorkGoogle() {
         driver.get(portalUrl)
-        loginUsingGoogleAccount();
-        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
-        val category1 = driver.findElement(By.xpath(tabId))
-        category1.click()
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
-        driver.findElements(By.id("plusButton"))[0].click()
-        driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
-        driver.findElement(By.id(cartButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("productInCart")))
-        val result = driver.findElement(By.id("productInCart")).isDisplayed;
-        driver.findElement(By.id("deleteButton")).click();
-        logout();
-        Assertions.assertTrue(result)
+        loginUsingGoogleAccount()
+        PlusButtonWork()
     }
 
     @Test
-    fun DeleteButtonIsVisible() {
+    fun DeleteButtonIsVisibleGoogle() {
         driver.get(portalUrl)
-        loginUsingGoogleAccount();
-        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
-        val category1 = driver.findElement(By.xpath(tabId))
-        category1.click()
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
-        driver.findElements(By.id("plusButton"))[0].click()
-        driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
-        driver.findElement(By.id(cartButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("deleteButton")))
-        val result = driver.findElement(By.id("deleteButton")).isDisplayed;
-        driver.findElement(By.id("deleteButton")).click();
-        logout();
-        Assertions.assertTrue(result)
+        loginUsingGoogleAccount()
+        DeleteButtonIsVisible()
     }
 
     @Test
-    fun DeleteButtonWork() {
+    fun DeleteButtonWorkGoogle() {
         driver.get(portalUrl)
-        loginUsingGoogleAccount();
-        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
-        val category1 = driver.findElement(By.xpath(tabId))
-        category1.click()
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
-        driver.findElements(By.id("plusButton"))[0].click()
-        driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
-        driver.findElement(By.id(cartButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("deleteButton")))
-        driver.findElement(By.id("deleteButton")).click();
-        val result = driver.findElements(By.id("productInCart"));
-        logout();
-        Assertions.assertTrue(result.size==0)
+        loginUsingGoogleAccount()
+        DeleteButtonWork()
     }
 
     @Test
-    fun addMulipleElements() {
+    fun addMultipleElementsGoogle() {
         driver.get(portalUrl)
-        loginUsingGoogleAccount();
-        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
-        val category1 = driver.findElement(By.xpath(tabId))
-        category1.click()
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
-        driver.findElements(By.id("plusButton"))[0].click()
-        driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
-        driver.findElements(By.id("plusButton"))[0].click()
-        driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
-        driver.findElements(By.id("plusButton"))[1].click()
-        driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
-        driver.findElement(By.id(cartButton)).click();
-        Thread.sleep(2000)
-        val result = driver.findElements(By.id("productInCart"));
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("deleteButton")))
-        driver.findElements(By.id("deleteButton"))[0].click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("deleteButton")))
-        driver.findElements(By.id("deleteButton"))[0].click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("deleteButton")))
-        driver.findElements(By.id("deleteButton"))[0].click();
-        Thread.sleep(2000)
-        val result2 = driver.findElements(By.id("productInCart"));
-        logout();
-        Assertions.assertTrue(result.size==2)
-        Assertions.assertTrue(result2.size==0)
+        loginUsingGoogleAccount()
+        addMultipleElements()
     }
 
     @Test
-    fun clearCartAfterOrder() {
+    fun clearCartAfterOrderGoogle() {
         driver.get(portalUrl)
-        loginUsingGoogleAccount();
-        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
-        val category1 = driver.findElement(By.xpath(tabId))
-        category1.click()
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
-        driver.findElements(By.id("plusButton"))[0].click()
-        driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
-        driver.findElement(By.id(cartButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
-        val result = driver.findElements(By.id("productInCart"));
-        driver.findElement(By.id("orderButton")).click()
-        val result2 = driver.findElements(By.id("productInCart"));
-        logout();
-        Assertions.assertTrue(result.size==1)
-        Assertions.assertTrue(result2.size==0)
+        loginUsingGoogleAccount()
+        clearCartAfterOrder()
     }
 
     @Test
-    fun createOrderWork() {
+    fun createOrderWorkGoogle() {
         driver.get(portalUrl)
         loginUsingGoogleAccount();
-        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("ordersButton")))
-
-        driver.findElement(By.id("ordersButton")).click()
-        val ordersCount = driver.findElements(By.id("order"))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("homeButton")))
-        driver.findElement(By.id("homeButton")).click()
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
-        val category1 = driver.findElement(By.xpath(tabId))
-        category1.click()
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
-        driver.findElements(By.id("plusButton"))[0].click()
-        driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
-        driver.findElement(By.id(cartButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
-        Thread.sleep(2000)
-        val result = driver.findElements(By.id("productInCart"));
-        driver.findElement(By.id("orderButton")).click()
-        Thread.sleep(2000)
-        val result2 = driver.findElements(By.id("productInCart"));
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("homeButton")))
-        driver.findElement(By.id("homeButton")).click()
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("ordersButton")))
-        driver.findElement(By.id("ordersButton")).click()
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("homeButton")))
-        Thread.sleep(2000)
-        val result3 = driver.findElements(By.id("order"))
-        driver.findElement(By.id("homeButton")).click()
-        logout();
-        Assertions.assertEquals(1,result.size)
-        Assertions.assertEquals(0,result2.size)
-        Assertions.assertEquals(ordersCount.size+1, result3.size)
+        createOrderWork()
     }
 
     @Test
-    fun createOrderWorkMultipleElements() {
+    fun createOrderWorkMultipleElementsGoogle() {
         driver.get(portalUrl)
-        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-
-        loginUsingGoogleAccount();
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("ordersButton")))
-        driver.findElement(By.id("ordersButton")).click()
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("order")))
-        val ordersCount = driver.findElements(By.id("order"))
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("homeButton")))
-        driver.findElement(By.id("homeButton")).click()
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
-        val category1 = driver.findElement(By.xpath(tabId))
-        category1.click()
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
-        driver.findElements(By.id("plusButton"))[0].click()
-        driver.switchTo().alert().accept();
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
-        driver.findElements(By.id("plusButton"))[0].click()
-        driver.switchTo().alert().accept();
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
-        driver.findElements(By.id("plusButton"))[1].click()
-        driver.switchTo().alert().accept();
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
-        driver.findElement(By.id(cartButton)).click();
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
-        val result = driver.findElements(By.id("productInCart"));
-        Thread.sleep(2000);
-        val productsAmount = driver.findElements(By.id("productAmount"));
-        val productText = driver.findElement(By.id("productAmount")).text;
-        driver.findElement(By.id("orderButton")).click()
-        Thread.sleep(2000);
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
-        val result2 = driver.findElements(By.id("productInCart"));
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("homeButton")))
-        driver.findElement(By.id("homeButton")).click()
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("ordersButton")))
-        driver.findElement(By.id("ordersButton")).click()
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("order")))
-        val result3 = driver.findElements(By.id("order"))
-        driver.findElement(By.id("homeButton")).click()
-
-        logout();
-        Assertions.assertEquals(2, result.size)
-        Assertions.assertEquals(0,result2.size)
-        Assertions.assertEquals(ordersCount.size+1,result3.size)
-        Assertions.assertEquals(2, productsAmount.size)
-        Assertions.assertEquals("Ilość produktów w koszyku: 2",productText)
+        loginUsingGoogleAccount()
+        createOrderWorkMultipleElements()
     }
 
     @Test
-    fun verifySimpleOrder() {
+    fun verifySimpleOrderGoogle() {
         driver.get(portalUrl)
-        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-
-        loginUsingGithubAccount();
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
-        val category1 = driver.findElement(By.xpath(tabId))
-        category1.click()
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
-        driver.findElements(By.id("plusButton"))[0].click()
-        driver.switchTo().alert().accept();
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
-        driver.findElement(By.id(cartButton)).click();
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
-        Thread.sleep(2000);
-        val result = driver.findElements(By.id("productInCart"));
-        Thread.sleep(2000);
-        val productsAmount = driver.findElements(By.id("productAmount"));
-        val productText = driver.findElement(By.id("productAmount")).text;
-        driver.findElement(By.id(outlinedBasic)).sendKeys(testowyAdres)
-        driver.findElement(By.id("orderButton")).click()
-        Thread.sleep(2000);
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
-        val result2 = driver.findElements(By.id("productInCart"));
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("homeButton")))
-        driver.findElement(By.id("homeButton")).click()
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("ordersButton")))
-        driver.findElement(By.id("ordersButton")).click()
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("order")))
-        val result3 = driver.findElements(By.id("order"))
-
-        val date = driver.findElement(By.id("order_date_"+(result3.size-1))).text;
-        val price = driver.findElement(By.id("order_price_"+(result3.size-1))).text;
-        val address = driver.findElement(By.id("order_address_"+(result3.size-1))).text;
-
-        driver.findElement(By.id("homeButton")).click()
-
-        logout();
-        Assertions.assertEquals(1, result.size)
-        Assertions.assertEquals(0,result2.size)
-        Assertions.assertEquals(1, productsAmount.size)
-        Assertions.assertEquals(LocalDateTime.now().toString().substring(0,10),date)
-        Assertions.assertEquals("120.1 PLN",price)
-        Assertions.assertEquals(testowyAdres,address)
-        Assertions.assertEquals("Ilość produktów w koszyku: 1",productText)
+        loginUsingGoogleAccount();
+        verifySimpleOrder();
     }
 
     @Test
@@ -654,6 +409,10 @@ class ApplicationTest {
         //cart button should be visible when user is logged
         driver.get(portalUrl)
         loginUsingGithubAccount();
+        cartButtonIsVisible();
+    }
+
+    fun cartButtonIsVisible(){
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
         val cartButtons = driver.findElement(By.id(cartButton)).isDisplayed
@@ -666,6 +425,10 @@ class ApplicationTest {
         //orders button should be visible when user is logged
         driver.get(portalUrl)
         loginUsingGithubAccount();
+        ordersButtonIsVisible();
+    }
+
+    fun ordersButtonIsVisible(){
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id("ordersButton")))
         val cartButtons = driver.findElement(By.id("ordersButton")).isDisplayed
@@ -678,6 +441,10 @@ class ApplicationTest {
         //cart button should be visible when user is logged
         driver.get(portalUrl)
         loginUsingGithubAccount();
+        CartButtonWork();
+    }
+
+    fun CartButtonWork(){
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
         driver.findElement(By.id(cartButton)).click();
@@ -691,6 +458,10 @@ class ApplicationTest {
     fun OrdersButtonWorkGithub() {
         driver.get(portalUrl)
         loginUsingGithubAccount();
+        OrdersButtonWork();
+    }
+
+    fun OrdersButtonWork(){
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id("ordersButton")))
         driver.findElement(By.id("ordersButton")).click();
@@ -705,6 +476,9 @@ class ApplicationTest {
     fun PlusButtonIsVisibleGithub() {
         driver.get(portalUrl)
         loginUsingGithubAccount();
+        PlusButtonIsVisible();
+    }
+    fun PlusButtonIsVisible(){
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
         val category1 = driver.findElement(By.xpath(tabId))
@@ -719,6 +493,10 @@ class ApplicationTest {
     fun PlusButtonWorkGithub() {
         driver.get(portalUrl)
         loginUsingGithubAccount();
+        PlusButtonWork();
+    }
+
+    fun PlusButtonWork(){
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
         val category1 = driver.findElement(By.xpath(tabId))
@@ -738,7 +516,10 @@ class ApplicationTest {
     @Test
     fun DeleteButtonIsVisibleGithub() {
         driver.get(portalUrl)
-        loginUsingGithubAccount();
+        loginUsingGithubAccount()
+        DeleteButtonIsVisible()
+    }
+    fun DeleteButtonIsVisible(){
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
         val category1 = driver.findElement(By.xpath(tabId))
@@ -758,7 +539,11 @@ class ApplicationTest {
     @Test
     fun DeleteButtonWorkGithub() {
         driver.get(portalUrl)
-        loginUsingGithubAccount();
+        loginUsingGithubAccount()
+        DeleteButtonWork()
+    }
+
+    fun DeleteButtonWork(){
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
         val category1 = driver.findElement(By.xpath(tabId))
@@ -778,7 +563,11 @@ class ApplicationTest {
     @Test
     fun addMulipleElementsGithub() {
         driver.get(portalUrl)
-        loginUsingGithubAccount();
+        loginUsingGithubAccount()
+        addMultipleElements()
+    }
+
+    fun addMultipleElements(){
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
         val category1 = driver.findElement(By.xpath(tabId))
@@ -812,7 +601,11 @@ class ApplicationTest {
     @Test
     fun clearCartAfterOrderGithub() {
         driver.get(portalUrl)
-        loginUsingGithubAccount();
+        loginUsingGithubAccount()
+        clearCartAfterOrder()
+    }
+
+    fun clearCartAfterOrder(){
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
         val category1 = driver.findElement(By.xpath(tabId))
@@ -834,7 +627,10 @@ class ApplicationTest {
     @Test
     fun createOrderWorkGithub() {
         driver.get(portalUrl)
-        loginUsingGithubAccount();
+        loginUsingGithubAccount()
+        createOrderWork()
+    }
+    fun createOrderWork(){
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
         wait.until(ExpectedConditions.elementToBeClickable(By.id("ordersButton")))
 
@@ -874,10 +670,12 @@ class ApplicationTest {
     @Test
     fun createOrderWorkMultipleElementsGithub() {
         driver.get(portalUrl)
+        loginUsingGithubAccount()
+        createOrderWorkMultipleElements()
+    }
+
+    fun createOrderWorkMultipleElements(){
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-
-        loginUsingGithubAccount();
-
         wait.until(ExpectedConditions.elementToBeClickable(By.id("ordersButton")))
         driver.findElement(By.id("ordersButton")).click()
         wait.until(ExpectedConditions.elementToBeClickable(By.id("order")))
@@ -936,9 +734,13 @@ class ApplicationTest {
     @Test
     fun verifySimpleOrderGithub() {
         driver.get(portalUrl)
-        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
 
         loginUsingGithubAccount();
+        verifySimpleOrder();
+    }
+
+    public fun verifySimpleOrder(){
+        val wait = WebDriverWait(driver, Duration.ofSeconds(10))
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tabId)))
         val category1 = driver.findElement(By.xpath(tabId))
