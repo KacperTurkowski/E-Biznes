@@ -14,7 +14,7 @@ const StartPage = ()=>{
     const [categories, setCategories] = useState([]);
     const [value, setValue] = useState(0);
 
-    const changeTab = (event, newValue) => {
+    const changeTab = (_event, newValue) => {
         setValue(newValue);
     };
 
@@ -58,7 +58,7 @@ const StartPage = ()=>{
 
                     </Tabs>
                     {
-                        categories.map((category, index)=>(
+                        categories.map((_category, index)=>(
                             <TabPanel id={'category_'+index} value={value} index={index} />
                         ))
                     }

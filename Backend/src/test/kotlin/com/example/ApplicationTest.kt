@@ -12,6 +12,9 @@ import java.time.LocalDateTime
 class ApplicationTest {
     private var driver = WebDriverManager.edgedriver().create()
     private val portalUrl = "http://localhost:3000"
+    private val shopName = "shop-name";
+    private val cartButton = "cart-Button"
+    private val tabId = "//*[@id=\"full-width-tab-1\"]";
 
     fun loginUsingGithubAccount(){
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
@@ -63,11 +66,11 @@ class ApplicationTest {
     }
 
     @AfterEach
-    fun `close browser`() {
+    fun closeBrowser() {
         driver.close()
     }
     @BeforeEach
-    fun `open browser`() {
+    fun openBrowser() {
         driver = WebDriverManager.edgedriver().create()
     }
 
@@ -75,8 +78,8 @@ class ApplicationTest {
     fun shopNameVisibility() {
         driver.get(portalUrl)
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("shop-name")))
-        val shopNameVisibility = driver.findElement(By.id("shop-name")).isDisplayed
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(shopName)))
+        val shopNameVisibility = driver.findElement(By.id(shopName)).isDisplayed
         Assertions.assertTrue(shopNameVisibility)
     }
 
@@ -85,8 +88,8 @@ class ApplicationTest {
         //cart button should be hidden when user isn't logged
         driver.get(portalUrl)
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        val cartButtons = driver.findElements(By.id("cart-Button"))
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        val cartButtons = driver.findElements(By.id(cartButton))
 
         Assertions.assertEquals(cartButtons.size, 0)
     }
@@ -243,8 +246,8 @@ class ApplicationTest {
         val button = driver.findElement(By.id("homeButton"))
         button.click()
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("shop-name")))
-        val shopNameVisibility = driver.findElement(By.id("shop-name")).isDisplayed
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(shopName)))
+        val shopNameVisibility = driver.findElement(By.id(shopName)).isDisplayed
         Assertions.assertTrue(shopNameVisibility)
     }
 
@@ -254,8 +257,8 @@ class ApplicationTest {
         val button = driver.findElement(By.id("homeButton"))
         button.click()
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("shop-name")))
-        val shopNameVisibility = driver.findElement(By.id("shop-name")).isDisplayed
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(shopName)))
+        val shopNameVisibility = driver.findElement(By.id(shopName)).isDisplayed
         Assertions.assertTrue(shopNameVisibility)
     }
 
@@ -265,8 +268,8 @@ class ApplicationTest {
         val button = driver.findElement(By.id("homeButton"))
         button.click()
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("shop-name")))
-        val shopNameVisibility = driver.findElement(By.id("shop-name")).isDisplayed
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(shopName)))
+        val shopNameVisibility = driver.findElement(By.id(shopName)).isDisplayed
         Assertions.assertTrue(shopNameVisibility)
     }
 
@@ -311,8 +314,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGoogleAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        val cartButtons = driver.findElement(By.id("cart-Button")).isDisplayed
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        val cartButtons = driver.findElement(By.id(cartButton)).isDisplayed
         logout();
         Assertions.assertTrue(cartButtons)
     }
@@ -335,8 +338,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGoogleAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
         val element = driver.findElement(By.id("orderButton")).isDisplayed
         logout();
@@ -382,8 +385,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
         driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("productInCart")))
         val result = driver.findElement(By.id("productInCart")).isDisplayed;
         driver.findElement(By.id("deleteButton")).click();
@@ -402,8 +405,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
         driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("deleteButton")))
         val result = driver.findElement(By.id("deleteButton")).isDisplayed;
         driver.findElement(By.id("deleteButton")).click();
@@ -422,8 +425,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
         driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("deleteButton")))
         driver.findElement(By.id("deleteButton")).click();
         val result = driver.findElements(By.id("productInCart"));
@@ -448,8 +451,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[1].click()
         driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
         Thread.sleep(2000)
         val result = driver.findElements(By.id("productInCart"));
         wait.until(ExpectedConditions.elementToBeClickable(By.id("deleteButton")))
@@ -476,8 +479,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
         driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
         val result = driver.findElements(By.id("productInCart"));
         driver.findElement(By.id("orderButton")).click()
@@ -505,8 +508,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
         driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
         Thread.sleep(2000)
         val result = driver.findElements(By.id("productInCart"));
@@ -558,8 +561,8 @@ class ApplicationTest {
         driver.findElements(By.id("plusButton"))[1].click()
         driver.switchTo().alert().accept();
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
         val result = driver.findElements(By.id("productInCart"));
@@ -604,8 +607,8 @@ class ApplicationTest {
         driver.findElements(By.id("plusButton"))[0].click()
         driver.switchTo().alert().accept();
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
         Thread.sleep(2000);
@@ -650,8 +653,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGithubAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        val cartButtons = driver.findElement(By.id("cart-Button")).isDisplayed
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        val cartButtons = driver.findElement(By.id(cartButton)).isDisplayed
         logout();
         Assertions.assertTrue(cartButtons)
     }
@@ -674,8 +677,8 @@ class ApplicationTest {
         driver.get(portalUrl)
         loginUsingGithubAccount();
         val wait = WebDriverWait(driver, Duration.ofSeconds(10))
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
         val element = driver.findElement(By.id("orderButton")).isDisplayed
         logout();
@@ -721,8 +724,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
         driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("productInCart")))
         val result = driver.findElement(By.id("productInCart")).isDisplayed;
         driver.findElement(By.id("deleteButton")).click();
@@ -741,8 +744,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
         driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("deleteButton")))
         val result = driver.findElement(By.id("deleteButton")).isDisplayed;
         driver.findElement(By.id("deleteButton")).click();
@@ -761,8 +764,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
         driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("deleteButton")))
         driver.findElement(By.id("deleteButton")).click();
         val result = driver.findElements(By.id("productInCart"));
@@ -787,8 +790,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[1].click()
         driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
         Thread.sleep(2000)
         val result = driver.findElements(By.id("productInCart"));
         wait.until(ExpectedConditions.elementToBeClickable(By.id("deleteButton")))
@@ -815,8 +818,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
         driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
         val result = driver.findElements(By.id("productInCart"));
         driver.findElement(By.id("orderButton")).click()
@@ -844,8 +847,8 @@ class ApplicationTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("plusButton")))
         driver.findElements(By.id("plusButton"))[0].click()
         driver.switchTo().alert().accept();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
         Thread.sleep(2000)
         val result = driver.findElements(By.id("productInCart"));
@@ -897,8 +900,8 @@ class ApplicationTest {
         driver.findElements(By.id("plusButton"))[1].click()
         driver.switchTo().alert().accept();
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
         val result = driver.findElements(By.id("productInCart"));
@@ -943,8 +946,8 @@ class ApplicationTest {
         driver.findElements(By.id("plusButton"))[0].click()
         driver.switchTo().alert().accept();
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("cart-Button")))
-        driver.findElement(By.id("cart-Button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(cartButton)))
+        driver.findElement(By.id(cartButton)).click();
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("orderButton")))
         Thread.sleep(2000);
